@@ -1,3 +1,121 @@
+1.9.4 / 2014-09-16
+==================
+
+* Adds support for tab based indenting and outdenting of <ul> and <ol>
+* Adds a save button to the anchor form
+* Improves toolbar positioning
+* Adds anchorButton and anchorButtonClass options
+
+
+1.9.0 / 2014-08-08
+==================
+
+* Extensions
+* Disables the toolbar when selecting within an element that has contenteditable="false"
+* Fixes hidden placeholder content override
+
+
+1.8.14 / 2014-06-11
+===================
+
+* Fixes bug where if you had an empty blockquote the placeholder would still be active
+* Fixes bug that would create link without values
+* Exposes save/restoreSelection()
+* Allows customization of active/first/last button classes
+* Adds a script to run app from the cli
+* Adds protocols to checkLinkFormat regex
+
+
+1.8.8 / 2014-05-08
+==================
+
+* Fixes unlink behavior on Firefox
+* Fixes white space behavior at the end of anchors
+
+
+1.8.6 / 2014-05-03
+==================
+
+* Adds non-minified CSS files to bower.json
+
+
+1.8.5 / 2014-05-01
+==================
+
+* Changes to the element list or element selector now take effect on reactivation
+* Changed innerHTML to textContent to prevent XSS through twisted href values
+* Checks for data-disable-return on element on paste
+* Adds disableEditing and elementsContainer options
+
+
+1.8.0 / 2014-04-12
+==================
+
+* Removes anchor preview listeners on deactivate
+* Implements clean paste
+* Adds an option to validate links
+* Adds a basic extensions support
+* Misc minor fixes
+
+
+1.7.5 / 2014-03-30
+==================
+
+* Fixes isActive toggling
+* Removes anchor preview default value
+
+
+1.7.3 / 2014-03-22
+==================
+
+* Fixes activate/deactivate behavior
+
+
+1.7.2 / 2014-03-22
+==================
+
+* Removes DOM elements created by MediumEditor on deactivate
+
+
+1.7.1 / 2014-03-22
+==================
+
+* Prevents new lines with shift+enter when disableReturn is set to true
+
+
+1.7.0 / 2014-03-22
+==================
+
+* Removes compass dependency by using grunt with libsass
+* Fixes subscript button markup
+* Fixes anchor preview behavior for empty links and anchors
+* Adds a new option to disable double returns
+
+
+1.6.7 / 2014-03-13
+==================
+
+* Allows initialization with a single DOM node
+* Adds indent and outdent buttons
+
+
+1.6.5 / 2014-03-08
+==================
+
+* fixes some minor paste bugs
+* adds a delay option for anchor toolbar
+* fixes anchor toolbar initial positioning
+* fixes heading and blockquote on IE
+
+
+1.6.1 / 2014-03-04
+==================
+
+* fixes case where clicking anchor preview and then clicking into the anchorInput
+  causes hideToolbarActions to be called
+* fixes window resize when toolbar element is not created
+
+
 1.6.0 / 2014-02-27
 ==================
 
@@ -5,6 +123,7 @@
 * Removes unused method bindElementToolbarEvents
 * Adds a preview toolbar for anchors
 * Removes paste event binding on deactivate
+
 
 1.5.4 / 2014-02-12
 ==================

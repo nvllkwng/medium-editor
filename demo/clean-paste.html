@@ -22,7 +22,9 @@
     <script src="../dist/js/medium-editor.js"></script>
     <script>
         var editor = new MediumEditor('.editable', {
-            buttonLabels: 'fontawesome'
+            buttonLabels: 'fontawesome',
+            cleanPastedHTML: true,
+            forcePlainText: false
         });
     </script>
 </body>

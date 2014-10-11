@@ -1,4 +1,4 @@
-function fireEvent (element, event, keyCode, ctrlKey, target) {
+function fireEvent (element, event, keyCode, ctrlKey, target, relatedTarget) {
    if (document.createEvent) {
        // dispatch for firefox + others
        var evt = document.createEvent("HTMLEvents");
@@ -11,6 +11,9 @@ function fireEvent (element, event, keyCode, ctrlKey, target) {
        }
        if (target) {
         evt.target = target;
+       }
+       if (relatedTarget) {
+        evt.relatedTarget = relatedTarget;
        }
        return !element.dispatchEvent(evt);
    } else {
@@ -26,4 +29,19 @@ function selectElementContents(el) {
     range.selectNodeContents(el);
     sel.removeAllRanges();
     sel.addRange(range);
+}
+
+function tearDown(el) {
+    var elements = document.querySelectorAll('.medium-editor-toolbar'),
+        i,
+        sel = window.getSelection();
+    for (i = 0; i < elements.length; i += 1) {
+        document.body.removeChild(elements[i]);
+    }
+    elements = document.querySelectorAll('.medium-editor-anchor-preview');
+    for (i = 0; i < elements.length; i += 1) {
+        document.body.removeChild(elements[i]);
+    }
+    document.body.removeChild(el);
+    sel.removeAllRanges();
 }

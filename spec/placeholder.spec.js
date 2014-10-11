@@ -1,27 +1,19 @@
 /*global MediumEditor, describe, it, expect, spyOn,
          afterEach, beforeEach, selectElementContents,
-         jasmine, fireEvent*/
+         jasmine, fireEvent, tearDown*/
 
 describe('Placeholder TestCase', function () {
     'use strict';
 
     beforeEach(function () {
-        this.body = document.getElementsByTagName('body')[0];
         this.el = document.createElement('div');
         this.el.className = 'editor';
         this.el.innerHTML = '';
-        this.body.appendChild(this.el);
+        document.body.appendChild(this.el);
     });
 
     afterEach(function () {
-        var elements = document.querySelectorAll('.medium-editor-toolbar'),
-            i,
-            sel = window.getSelection();
-        for (i = 0; i < elements.length; i += 1) {
-            this.body.removeChild(elements[i]);
-        }
-        this.body.removeChild(this.el);
-        sel.removeAllRanges();
+        tearDown(this.el);
     });
 
     it('should set placeholder for empty elements', function () {
@@ -29,8 +21,14 @@ describe('Placeholder TestCase', function () {
         expect(editor.elements[0].className).toContain('medium-editor-placeholder');
     });
 
-    it('should not set a placeholder form elements with text content', function () {
+    it('should not set a placeholder for elements with text content', function () {
         this.el.innerHTML = 'some text';
+        var editor = new MediumEditor('.editor');
+        expect(editor.elements[0].className).not.toContain('medium-editor-placeholder');
+    });
+
+    it('should not set a placeholder for elements with images only', function () {
+        this.el.innerHTML = '<img src="foo.jpg">';
         var editor = new MediumEditor('.editor');
         expect(editor.elements[0].className).not.toContain('medium-editor-placeholder');
     });
@@ -77,6 +75,5 @@ describe('Placeholder TestCase', function () {
             placeholder = window.getComputedStyle(editor.elements[0], ':after').getPropertyValue('content');
         expect(placeholder).toEqual("'Custom placeholder'");
     });
-
 
 });

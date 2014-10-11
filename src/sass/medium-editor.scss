@@ -1,6 +1,6 @@
-@import "compass/css3";
 @import "clearfix";
 @import "pop-upwards";
+@import "buttons";
 
 %medium-toolbar-arrow {
     position: absolute;
@@ -47,10 +47,11 @@
             display: block;
             margin: 0;
             padding: 15px;
-            text-decoration: none;
-            font-size: 14px;
             cursor: pointer;
-            @include box-sizing(border-box);
+            font-size: 14px;
+            line-height: 1.33;
+            text-decoration: none;
+            box-sizing: border-box;
         }
 
         .medium-editor-action-underline {
@@ -84,7 +85,7 @@
         -ms-animation: pop-upwards 160ms forwards linear;
          -o-animation: pop-upwards 160ms forwards linear;
             animation: pop-upwards 160ms forwards linear;
-    @include transition(top .075s ease-out,left .075s ease-out);
+    transition: top .075s ease-out, left .075s ease-out;
 }
 
 .medium-editor-action-bold {
@@ -97,18 +98,19 @@
 
 .medium-editor-toolbar-form-anchor {
     display: none;
+
     input,
     a {
         font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
     }
 
-    input {
+    .medium-editor-toolbar-anchor-input, label {
         margin: 0;
         padding: 6px;
         width: 316px;
         border: none;
         font-size: 14px;
-        @include box-sizing(border-box);
+        box-sizing: border-box;
         &:focus {
             outline: 0;
             border: none;
@@ -116,6 +118,11 @@
             -webkit-appearance: none;
                -moz-appearance: none;
         }
+    }
+
+    label {
+        display: block;
+
     }
 
     a {
@@ -134,7 +141,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        content: attr(data-placeholder);
+        content: attr(data-placeholder) !important;
         font-style: italic;
     }
 }
